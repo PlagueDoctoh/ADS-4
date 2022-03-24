@@ -46,7 +46,7 @@ int countPairs3(int *arr, int len, int value) {
     if (arr[i] > value / 2) {
       break;
     }
-    res = BinNum();
+    res = BinNum(, len - 1 - i, value - var[i]);
   
   return 0;
 }

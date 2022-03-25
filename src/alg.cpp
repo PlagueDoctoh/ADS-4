@@ -1,7 +1,4 @@
 // Copyright 2021 NNTU-CS
-int BinNum(int *arr, int len, int value) {
-  int l = 0, r = len - 1, res = 0;
-  int mid = (r + l) / 2;
   
 
 
@@ -43,10 +40,23 @@ int countPairs2(int *arr, int len, int value) {
 int countPairs3(int *arr, int len, int value) {
   int res = 0;
   for (int i = 0; i <= len - 1; i++) {
-    if (arr[i] > value / 2) {
-      break;
+    int l = i + 1, r = len, part = value - arr[i];
+    while (l < r) {
+      int mid = (r + l) / 2;
+      if (arr[mid] < part) {
+        l = mid + 1;
+      } else {
+        r = mid;
+      }
     }
-    res = BinNum(, len - 1 - i, value - var[i]);
-  
-  return 0;
+    while (arr[l] == part) {
+      res++;
+      l++;
+    }
+  }
+  if (res == 0) {
+    return 0;
+  } else {
+    return res;
+  }
 }
